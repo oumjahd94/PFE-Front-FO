@@ -1,0 +1,385 @@
+<header class="fixed-top chadaww">
+  <app-entete-page></app-entete-page>
+</header>
+
+<div class="wrapper">
+
+  <div class="sidebar">
+    <app-barre-laterale></app-barre-laterale>
+  </div>
+
+  <div class="main-panel">
+    <div class="content">
+
+
+
+
+
+<!-- la barre haut de dashboard-->
+<nav class="navbar navbar-header navbar-expand-lg">
+
+  <div class="container-fluid">
+
+    <span class="fpct2">Pricing</span>
+
+
+    <ul class="navbar-nav style-nav">
+
+      <!-- La partie accueil-->
+      <li class="nav-item ">
+        <a class="nav-link size-of-nav-items" href="#"  role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="la la-home"></i> Accueil
+        </a>
+      </li>
+
+      <!-- La partie notifications-->
+
+      <li class="nav-item dropdown hidden-caret">
+
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="la la-bell"></i>  5 Notifications
+        </a>
+
+        <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+
+          <li>
+            <div class="dropdown-title">Vous avez 5 notifications </div>
+          </li>
+
+          <li>
+            <div class="notif-center">
+              <a href="#">
+                <div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Nouvel utilisateur est enregistré
+												</span>
+                  <span class="time">Il y a 5 minutes</span>
+                </div>
+              </a>
+
+
+              <a href="#">
+                <div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Med a commenté sur Admin
+												</span>
+                  <span class="time">Il y a 15 minutes</span>
+                </div>
+              </a>
+
+              <a href="#">
+                <div class="notif-img">
+                  <img src="assets/img/profile2.jpg" alt="Img Profile">
+                </div>
+                <div class="notif-content">
+												<span class="block">
+													Reda vous envoie des messages
+												</span>
+                  <span class="time">Il y a 12 minutes</span>
+                </div>
+              </a>
+
+              <a href="#">
+                <div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Farrah  a aimé le site
+												</span>
+                  <span class="time">Il y a 17 minutes</span>
+                </div>
+              </a>
+
+              <a href="#">
+                <div class="notif-icon notif-danger"> <i class="la la-question"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Karim a demandé le fond SAKANE
+												</span>
+                  <span class="time">Il y a 35 minutes</span>
+                </div>
+              </a>
+
+            </div>
+          </li>
+
+          <li>
+            <a class="see-all" href="javascript:void(0);"> <strong>Voir toutes les notifications</strong> <i class="la la-angle-right"></i> </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <!-- La partie réglages-->
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"  role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="la la-cog"></i>  Settings
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+<hr class="lin">
+
+<div *ngIf="var1">
+
+  <app-login></app-login>
+
+</div>
+
+<div class="container-fluid espace-haut" *ngIf="var2">
+  <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-body" style="margin-left: 20px; margin-right: 20px;margin-top: 10px; ">
+
+        <table class="table table table-striped" border="0">
+          <thead style="background-color:#e6e6e6">
+          <tr>
+            <th></th>
+            <th><h6 align="center"> Tx DECH </h6></th>
+            <th><h6 align="center"> Tx RA </h6></th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td><label class="label control-label" style="display: block ; width : 100px ; ">Scénario :  </label></td>
+            <td>
+              <div *ngIf="listeDDT != null">
+                <select ngModel="listScenarioDDT.idScenarioDdt" id="sceDDT" class="form-control input-pill">
+                  <option *ngFor="let x of listeDDT" value= {{x.idScenarioDdt}} >{{x.valueScenario}} %</option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div *ngIf="listeRA != null">
+                <select ngModel="listScenarioRA.idScenarioFondsRa" id="sceRA" class="form-control input-pill">
+                  <option *ngFor="let x of listeRA" value= {{x.idScenarioFondsRa}} >{{x.valueScenarioFondsRa}} %</option>
+                </select>
+              </div>
+            </td>
+
+            <td style="font-size: 20px; ">Scénario de la dernière date de paiement</td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+        <!--la date de transaction-->
+
+        <div class="form-group form-inline">
+          <label for="dtTransaction" style="width: 200px ; float : left ; display: block ; ">Date de transaction :     </label>
+          <input type="date" class="form-control input-pill" id="dtTransaction" value="{{today | date:'yyyy-MM-dd'}}" style="size: 1px; "/>
+        </div>
+
+    </div>
+
+      <div class="card-header" style="margin-top: 50px; margin-left: 20px; margin-right: 20px; ">
+        <div class="card-title">Courbe des taux</div>
+      </div>
+
+      <div class="card-body" style="padding-left: 20px ;padding-right: 20px;">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+
+              <thead>
+              <tr>
+                <th><h6> 13Sem </h6></th>
+                <th><h6> 26Sem </h6></th>
+                <th><h6> 1An </h6></th>
+                <th><h6> 2An </h6></th>
+                <th><h6> 5An </h6></th>
+                <th><h6> 10An </h6></th>
+                <th><h6> 15An </h6></th>
+                <th><h6> 20An </h6></th>
+                <th><h6> 30An </h6></th>
+
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value1"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value2"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value3"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value4"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value5"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value6"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value7" /></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value8"/></td>
+                <td><input  type="number" value="0.0" class="champ form-control" id="value9"/></td>
+
+              </tr>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+
+      <div style="padding-left: 20px ;padding-right: 20px;">
+          La valeur du taux actuariel est exprimé en % : 3.86
+          <br><br>
+          Tx RA : Taux de remboursement anticipé <br>
+          Tx DECH : Taux de déchéance du terme
+
+      </div>
+
+      <div class="card-header" style="margin-top: 50px; margin-left: 20px; margin-right: 20px; ">
+        <div class="card-title">Discount margin</div>
+      </div>
+
+      <div class="card-body" style="padding-left: 20px ;padding-right: 20px;">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+
+            <thead>
+            <tr>
+              <th><h6> Discount margin A</h6></th>
+              <th><h6> Discount margin B</h6></th>
+              <th><h6> Discount margin S</h6></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td><input  type="number" value="{{dicountMarginA}}" class="form-control champ" id="valueA"></td>
+              <td><input  type="number" value="{{dicountMarginB}}" class="form-control champ" id="valueB"></td>
+              <td><input  type="number" value="{{dicountMarginC}}" class="form-control champ" id="valueC"></td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+      <div class="card-action" align="right">
+        <input type="hidden" name="action" id="action" value="1">
+        <button  class="btn btn-primary btn-border btn-round btn-lg" (click)="doPricing()" >Valider</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="col-md-12" *ngIf="actionToUse">
+    <div class="card">
+      <div class="card-body" style="padding-left: 20px ;padding-right: 20px; margin-top: 20px; ">
+        <div class="table-responsive">
+          <table class="table table-bordered alignementContenu">
+
+            <thead class="taille-titre">
+              <tr>
+                <th *ngFor="let h of headers"><strong>{{h}}</strong></th>
+                <!--<th>Écheanciers</th>-->
+              </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let pricer of dataPricing.slice(1), let myIndexI = index">
+
+              <td *ngFor="let value of pricer, let myIndexJ = index">
+
+                      <span *ngIf="myIndexJ === 5; else cas2">
+
+                           <span *ngIf="myIndexI === 0">
+                               <span>{{P1[4] | number : '1.2-2'}}</span>
+                           </span>
+                          <span *ngIf="myIndexI === 1">
+                               <span>{{P2[4] | number : '1.2-2' }}</span>
+                          </span>
+                          <span *ngIf="myIndexI === 2">
+                               <span>{{S[4] | number : '1.2-2'}}</span>
+                           </span>
+                      </span>
+
+                       <span #cas2 *ngIf="myIndexJ === 6; else cas3">
+
+                           <span *ngIf="myIndexI === 0">
+                               <span>{{P1[5] | number : '3.1-2'}}</span>
+                           </span>
+                          <span *ngIf="myIndexI === 1">
+                               <span>{{P2[5] | number : '3.1-2'}}</span>
+                          </span>
+                          <span *ngIf="myIndexI === 2">
+                               <span>{{S[5] | number : '3.1-2'}}</span>
+                           </span>
+                      </span>
+
+                       <span #cas3 *ngIf="myIndexJ === 9; else cas4">
+                         <span *ngIf="myIndexI === 0">
+                            <span><a href="../../assets/files/A_unitaire.xls" target="_self" download><img src="../../assets/img/excel24.png" ></a> </span>
+                         </span>
+                         <span *ngIf="myIndexI === 1">
+                         <span><a href="../../assets/files/B_unitaire.xls" target="_self" download><img src="../../assets/img/excel24.png" ></a> </span>
+                         </span>
+                          <span *ngIf="myIndexI === 2">
+                         <span><a href="../../assets/files/S_unitaire.xls" target="_self" download><img src="../../assets/img/excel24.png" ></a> </span>
+                           </span>
+                      </span>
+
+
+                       <span #cas4 *ngIf="myIndexJ === 8; else normal">
+                         <span *ngIf="myIndexI === 0">
+                            <span>{{departP1}} - {{finP1}}</span>
+                         </span>
+                         <span *ngIf="myIndexI === 1">
+                            <span>{{departP2}} - {{finP2}}</span>
+                         </span>
+                          <span *ngIf="myIndexI === 2">
+                            <span>{{departS}} - {{finS}}</span>
+                           </span>
+                      </span>
+
+
+
+                <ng-template #normal>{{value}}</ng-template>
+
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+<!--      <div style="padding-left: 20px ;padding-right: 20px; margin-top: 5px; "><h5>Cashflow   <i (click)="calculerCashflow()" class="la la-arrow-circle-o-right"></i></h5></div>
+
+      &lt;!&ndash; Cashflow&ndash;&gt;
+
+      <div class="card-body" style="padding-left: 20px ;padding-right: 20px; margin-top: 20px; " *ngIf="voirCashflow">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+
+            <tbody>
+               <tr *ngFor="let cashflow of vecCashFlow">
+                  <td *ngFor="let value of cashflow">{{value}}</td>
+               </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>-->
+
+
+    </div>
+
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</div>

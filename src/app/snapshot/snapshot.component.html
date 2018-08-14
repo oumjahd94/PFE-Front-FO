@@ -1,0 +1,247 @@
+<header class="fixed-top chadaww">
+  <app-entete-page></app-entete-page>
+</header>
+
+<div class="wrapper">
+
+  <div class="sidebar">
+    <app-barre-laterale></app-barre-laterale>
+  </div>
+
+  <div class="main-panel">
+    <div class="content">
+
+
+
+<nav class="navbar navbar-header navbar-expand-lg">
+
+  <div class="container-fluid">
+
+    <span class="fpct2">Snapshot</span>
+
+
+    <ul class="navbar-nav style-nav">
+
+      <!-- La partie accueil-->
+      <li class="nav-item ">
+        <a class="nav-link size-of-nav-items" href="#"  role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="la la-home"></i> Accueil
+        </a>
+      </li>
+
+      <!-- La partie notifications-->
+
+      <li class="nav-item dropdown hidden-caret">
+
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="la la-bell"></i>  5 Notifications
+        </a>
+
+        <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+
+          <li>
+            <div class="dropdown-title">Vous avez 5 notifications </div>
+          </li>
+
+          <li>
+            <div class="notif-center">
+              <a href="#">
+                <div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Nouvel utilisateur est enregistré
+												</span>
+                  <span class="time">Il y a 5 minutes</span>
+                </div>
+              </a>
+
+
+              <a href="#">
+                <div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Med a commenté sur Admin
+												</span>
+                  <span class="time">Il y a 15 minutes</span>
+                </div>
+              </a>
+
+              <a href="#">
+                <div class="notif-img">
+                  <img src="assets/img/profile2.jpg" alt="Img Profile">
+                </div>
+                <div class="notif-content">
+												<span class="block">
+													Reda vous envoie des messages
+												</span>
+                  <span class="time">Il y a 12 minutes</span>
+                </div>
+              </a>
+
+              <a href="#">
+                <div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Farrah  a aimé le site
+												</span>
+                  <span class="time">Il y a 17 minutes</span>
+                </div>
+              </a>
+
+              <a href="#">
+                <div class="notif-icon notif-danger"> <i class="la la-question"></i> </div>
+                <div class="notif-content">
+												<span class="block">
+													Karim a demandé le fond SAKANE
+												</span>
+                  <span class="time">Il y a 35 minutes</span>
+                </div>
+              </a>
+
+            </div>
+          </li>
+
+          <li>
+            <a class="see-all" href="javascript:void(0);"> <strong>Voir toutes les notifications</strong> <i class="la la-angle-right"></i> </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <!-- La partie réglages-->
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"  role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="la la-cog"></i>  Settings
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+<hr class="lin">
+
+<div class="container-fluid espace-haut">
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card">
+
+        <div class="card-header">
+          <div class="card-title">Présentation du fond </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <tbody>
+              <tr *ngFor="let dataPresentation of vecPresentation">
+                <td *ngFor="let value of dataPresentation; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">{{ value }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row"  style="margin-top: 30px;">
+    <div class="col-md-12">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Données sur le rendement du fond</div>
+        </div>
+
+        <div class="card-body" >
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="taille-titre">
+                 <tr>
+                    <th *ngFor="let dataHeader2 of vecRendement[1]"><strong>{{ dataHeader2 }}</strong></th>
+                 </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td *ngFor="let dataRendement of vecRendement[2]">
+                  {{dataRendement}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Structure du passif</div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+
+              <tbody>
+              <tr *ngFor="let dataVecPassif of vecPassif">
+                <td *ngFor="let value of dataVecPassif; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">{{value}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Compte de réserve</div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="taille-titre">
+              <tr>
+                <th *ngFor="let dataHeaderCompte of vecCompteHeaders"><strong>{{ dataHeaderCompte }}</strong></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td *ngFor="let dataCompte of vecCompteData">
+                  {{dataCompte}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  </div></div>
